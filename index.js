@@ -61,8 +61,8 @@ if (options.enable !== false) {
       replaceColons($excerpt.window.document.body, emojis)
     }
 
-    data.content = $content.window.document.body.innerHTML
-    data.excerpt = $excerpt.window.document.body.innerHTML
+    data.content = $content.serialize()
+    data.excerpt = $excerpt.serialize()
     return data
   })
 
@@ -74,7 +74,12 @@ function replaceColons (node, emojis) {
   if (!node || !node.childNodes) { return }
   for (let i = node.childNodes.length - 1; i >= 0; i--) {
     const child = node.childNodes[i]
-    if (child.tagName === 'PRE' || child.tagName === 'CODE') { return }
+    if (child.tagName === 'PRE' || 
+        child.tagName === 'CODE' ||
+        child.tagName === 'SCRIPT' ||
+        child.tagName === 'STYLE') { 
+      return
+    }
     if (child.nodeType === 3) {
       const content = child.data.replace(
         /:(\w+):/ig,
