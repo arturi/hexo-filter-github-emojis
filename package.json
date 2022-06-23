@@ -19,7 +19,7 @@
   "author": "CRIMX <straybugs@gmail.com> (http://blog.crimx.com)",
   "license": "MIT",
   "dependencies": {
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "lodash": "^4.17.15",
     "random-ua": "0.0.6",
     "request": "^2.83.0"
